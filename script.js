@@ -26,3 +26,8 @@ function removeTask(button) {
     taskList.removeChild(taskItem);
     removeTaskFromStorage(taskItem.querySelector('span').innerText);
 }
+
+function markAsCompleted(checkbox) {
+    const taskItem = checkbox.parentNode;
+    taskItem.querySelector('span').classList.toggle('completed');
+}
