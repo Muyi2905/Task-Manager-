@@ -31,3 +31,9 @@ function markAsCompleted(checkbox) {
     const taskItem = checkbox.parentNode;
     taskItem.querySelector('span').classList.toggle('completed');
 }
+
+function saveTaskToStorage(task) {
+    let tasks = getTasksFromStorage();
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
