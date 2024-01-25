@@ -37,3 +37,23 @@ function saveTaskToStorage(task) {
     tasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
+
+
+function loadTasksFromStorage() {
+    let tasks = getTasksFromStorage();
+    const taskList = document.getElementById('taskList');
+
+    tasks.forEach(task => {
+        const taskItem = document.createElement('li');
+        taskItem.innerHTML = `
+            <input type="checkbox" onchange="markAsCompleted(this)">
+            <span>${task}</span>
+            <button onclick="removeTask(this)">Delete</button>
+        `;
+        taskList.appendChild(taskItem);
+    });
+}
+
+function getTasksFromStorage() {
+    return JSON.parse(localStorage.getItem('tasks')) || [];
+}
