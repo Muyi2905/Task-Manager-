@@ -19,3 +19,10 @@ function addTask() {
         taskInput.value = ''; // Clear the input field
     }
 }
+
+function removeTask(button) {
+    const taskItem = button.parentNode;
+    const taskList = document.getElementById('taskList');
+    taskList.removeChild(taskItem);
+    removeTaskFromStorage(taskItem.querySelector('span').innerText);
+}
